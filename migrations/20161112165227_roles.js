@@ -1,8 +1,8 @@
 exports.up = function(knex, Promise) {
-  return knex.schema.createTable("groups", function (t) {
+  return knex.schema.createTable("roles", function (t) {
       t.increments("id").unsigned().primary()
-      t.integer('user_id').references('id').inTable('users').notNull().onDelete('cascade')         
-      t.enu('groups', ['admin', 'user'])
+      t.string('roles')//, ['admin', 'user'])
+      t.string('description')      
       t.boolean("deleted").nullable()       
       t.dateTime("createdAt").notNull()
       t.dateTime("updatedAt").nullable()

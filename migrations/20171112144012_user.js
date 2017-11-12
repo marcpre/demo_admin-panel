@@ -2,6 +2,7 @@ exports.up = function(knex, Promise) {
   return knex.schema.createTable("users", function (t) {
       t.increments("id").unsigned().primary()
       t.string("username")
+      t.integer('role_id').references('id').inTable('roles').notNull().onDelete('cascade')               
       t.string("email").notNull()
       t.string("password").notNull()
       t.boolean("deleted").nullable()       
