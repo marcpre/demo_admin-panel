@@ -5,7 +5,7 @@ function isLogged(req, res, next) {
   if (req.auth) {
     next()
   } else {
-    res.redirect('/')
+    res.redirect('login')
   }
 }
 

@@ -4,7 +4,7 @@ const router = express.Router()
 const utils = require('../util/utils')
 
 router.get('/', utils.isLogged(), (req, res) => {
-  res.render('dashboard')
+  res.render('index')
 })
 
 module.exports = router
