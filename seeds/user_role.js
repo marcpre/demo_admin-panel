@@ -43,7 +43,7 @@ exports.seed = async (knex, Promise) => {
                     deleted: faker.random.boolean(),
                     role_id: faker.random.arrayElement(roleIds),
                 })
-            }
+            } 
             users.push({
                 email: "admin@admin.com",
                 username: "admin",
