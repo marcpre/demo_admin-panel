@@ -1,10 +1,11 @@
 const express = require('express')
 
 const router = express.Router()
-const utils = require('../util/utils')
+const passportConfig = require('../config/passport')
 
-router.get('/', utils.isLogged(), (req, res) => {
+router.get('/', passportConfig.isAuthenticated, (req, res) => {
   res.render('index')
 })
 
 module.exports = router
+

@@ -17,7 +17,7 @@ router.post('/login', (req, res, next) => {
     if (err) return next(err)
     if (!user) return res.status(401).json({ error: 'Email or password is incorrect.' })
 
-    return res.render('dashboard')
+    return res.render('index')
   })(req, res, next)
 })
 
