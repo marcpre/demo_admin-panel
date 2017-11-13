@@ -41,7 +41,7 @@ app.use('/', index)
 
 // Start Server
 const port = process.env.APP_PORT || 8080
-const host = process.env.APP_URL || 'localhost'
+const host = process.env.APP_URL || '0.0.0.0'
 
 app.listen(port, host, () => {
   console.log(`Listening on ${host}:${port}`)
