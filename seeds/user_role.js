@@ -4,10 +4,12 @@ const dataLength = 9 //how many seeds should be generated
 
 //generate bcrypt password
 const plainPwd = "admin"
+const plainUserPwd = "user"
 
 exports.seed = async (knex, Promise) => {
     const salt = await bcrypt.genSalt(10)
     const password = await bcrypt.hash(plainPwd, salt)
+    const userPassword = await bcrypt.hash(plainUserPwd, salt)
     return knex('roles').del()
         .then(() => knex('users').del())
         .then(() => {
@@ -33,6 +35,8 @@ exports.seed = async (knex, Promise) => {
         .then(() => knex('roles').pluck('id').then(async (roleIds) => {
             const users = []
             const adminRoleId = await knex('roles').pluck('id').where('role','admin')
+            const userRoleId = await knex('roles').pluck('id').where('role','user')
+
             for (let index = 0; index < dataLength; index++) {
                 users.push({
                     email: faker.internet.email(),
@@ -54,6 +58,16 @@ exports.seed = async (knex, Promise) => {
                 deleted: false,
                 role_id: parseInt(adminRoleId), //admin role
             })
+            users.push({
+                email: "user@user.com",
+                username: "user",
+                password: userPassword,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+                deletedAt: null,
+                deleted: false,
+                role_id: parseInt(userRoleId), //admin role
+            })            
             return knex("users").insert(users)
         }))
 }
