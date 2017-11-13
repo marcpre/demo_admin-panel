@@ -10,14 +10,14 @@ aside.main-sidebar.hidden-print
 
 		// Sidebar Menu
 		ul.sidebar-menu
-			li
-				a(href='/')
-					i.fa.fa-dashboard
-					span Dashboard
-
-			li
-				a(href='usertable')
-					i.fa.fa-users
-					span Users
+				li
+					a(href='/')
+						i.fa.fa-dashboard
+						span Dashboard
+			if user.role == 'admin'
+				li
+					a(href='usertable')
+						i.fa.fa-users
+						span Users
 
 

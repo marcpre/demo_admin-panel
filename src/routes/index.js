@@ -7,5 +7,10 @@ router.get('/', passportConfig.isAuthenticated, (req, res) => {
   res.render('index')
 })
 
+router.get('/test', (req, res) => {
+  res.render('blank-page')
+})
+
+
 module.exports = router
 
